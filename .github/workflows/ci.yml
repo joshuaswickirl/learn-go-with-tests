@@ -1,0 +1,23 @@
+name: ci
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'internal/**'
+      - 'cmd/**'
+
+jobs:
+
+  lint:
+    container: golangci/golangci-lint:latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: golangci/golangci-lint-action@v2
+
+  unit-test:
+    container: golang:latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: run unit tests and code coverage
+      run: sh ./scripts/unit-test.sh
