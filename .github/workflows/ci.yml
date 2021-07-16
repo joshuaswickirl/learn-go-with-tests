@@ -3,19 +3,29 @@ name: ci
 on:
   pull_request:
     branches: [ main ]
-    paths:
-      - 'internal/**'
-      - 'cmd/**'
 
 jobs:
+  detect-changes:
+    outputs:
+      src: ${{ steps.filter.outputs.src }}
+    runs-on: ubuntu-latest
+    steps:
+    - uses: dorny/paths-filter@v2
+      id: filter
+      with:
+        filters: .github/filters.yml
 
   lint:
+    needs: detect-changes
+    if: ${{ needs.detect-changes.outputs.src == 'true' }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - uses: golangci/golangci-lint-action@v2
 
   unit-test:
+    needs: detect-changes
+    if: ${{ needs.detect-changes.outputs.src == 'true' }}
     runs-on: ubuntu-latest
     container: golang:latest
     steps:
