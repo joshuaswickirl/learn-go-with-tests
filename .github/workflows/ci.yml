@@ -36,8 +36,7 @@ jobs:
       run: sh ./scripts/unit-test.sh
 
   build:
-    needs: detect-changes
-    if: ${{ needs.detect-changes.outputs.src == 'true' }}
+    needs: [ lint, unit-test ]
     runs-on: ubuntu-latest
     container: golang:latest
     steps:
