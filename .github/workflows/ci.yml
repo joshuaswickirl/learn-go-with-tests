@@ -53,7 +53,7 @@ jobs:
       run: sh ./scripts/unit-test.sh
 
   build:
-    needs: [ lint, unit-test ]
+    needs: [ lint, code-ql, unit-test ]
     runs-on: ubuntu-latest
     container: golang:latest
     steps:
