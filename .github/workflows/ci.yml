@@ -40,6 +40,6 @@ jobs:
     runs-on: ubuntu-latest
     container: golang:latest
     steps:
-    - uses: actions/checkout@2
+    - uses: actions/checkout@v2
     - name: build binary
       run: sh ./scripts/build.sh
