@@ -18,9 +18,9 @@ func TestWallet(t *testing.T) {
 	t.Run("withdraw", func(t *testing.T) {
 		wallet := pointersanderrors.NewWallet(pointersanderrors.Bitcoin(20))
 
-		err := wallet.Withdraw(pointersanderrors.Bitcoin(10))
+		wallet.Withdraw(pointersanderrors.Bitcoin(10))
 
-		assertNoError(t, err)
+		//assertNoError(t, err)
 		assertBalance(t, wallet.Balance(), pointersanderrors.Bitcoin(10))
 	})
 
