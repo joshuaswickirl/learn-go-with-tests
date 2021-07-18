@@ -1,3 +1,3 @@
 #!/bin/bash
 
-golangci-lint run --out-format tab
+golangci-lint run --out-format tab --enable revive
