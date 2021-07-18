@@ -24,6 +24,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: golangci/golangci-lint-action@v2
+      with:
+        args: --config ./.golangci.yml
 
   code-ql:
     needs: detect-changes
