@@ -2,3 +2,9 @@
 linters:
   enable:
     - revive
+
+issues:
+  exclude-rules:
+    - linters:
+      - revive
+      text: 'exported:'

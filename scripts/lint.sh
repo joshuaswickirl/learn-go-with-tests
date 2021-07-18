@@ -1,3 +1,6 @@
 #!/bin/bash
 
-golangci-lint run -v --out-format tab
+golangci-lint run \
+    --exclude-use-default=true \
+    --out-format tab \
+    --config=.golangci.yml

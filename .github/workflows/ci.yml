@@ -21,9 +21,11 @@ jobs:
     needs: detect-changes
     if: ${{ needs.detect-changes.outputs.src == 'true' }}
     runs-on: ubuntu-latest
+    container: golangci/golangci-lint:latest
     steps:
     - uses: actions/checkout@v2
-    - uses: golangci/golangci-lint-action@v2
+    - name: run golangci-lint
+      run: sh scripts/lint.sh
 
   code-ql:
     needs: detect-changes
