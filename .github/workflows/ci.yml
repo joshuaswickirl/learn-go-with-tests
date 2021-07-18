@@ -24,8 +24,9 @@ jobs:
     container: golangci/golangci-lint:latest
     steps:
     - uses: actions/checkout@v2
-    - name: run golangci linter
-      run: sh ./scripts/lint.sh
+    - uses: golangci/golangci-lint-action@v2
+      with:
+        args: --enable revive  #--config ./.golangci.yml
 
   code-ql:
     needs: detect-changes
