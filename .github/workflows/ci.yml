@@ -51,8 +51,10 @@ jobs:
     container: golang:latest
     steps:
     - uses: actions/checkout@v2
-    - name: run unit tests and code coverage
+    - name: run unit tests
       run: sh ./scripts/unit-test.sh
+    - name: run code coverage
+      run: sh scripts/coverage.sh
 
   build:
     needs: [ lint, code-ql, unit-test ]
