@@ -53,7 +53,7 @@ func TestAdd(t *testing.T) {
 		word := "test"
 		def := "this is just a test"
 
-		err := dictionary.Add(word, def)
+		_ = dictionary.Add(word, def)
 
 		got, err := dictionary.Search(word)
 		if err != nil {
