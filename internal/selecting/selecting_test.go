@@ -27,6 +27,13 @@ func TestWebsiteRacer(t *testing.T) {
 		if got != want {
 			t.Errorf("got %q, want %q", got, want)
 		}
+
+		// swap arg order for coverage
+		got, _ = selecting.WebsiteRacer(fastURL, slowURL)
+
+		if got != want {
+			t.Errorf("got %q, want %q", got, want)
+		}
 	})
 
 	t.Run("returns error after 10s", func(t *testing.T) {
